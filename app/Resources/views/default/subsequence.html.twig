@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Subsequence Weighting</title>
+
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>        
+        
+    </head>
+    <body>
+        
+
+        <h1>Subsequence Weighting</h1>
+        <hr>
+
+        <form role="form" action="{{ path('calculate') }}" method="POST" >
+            <div class="row">
+
+                <div class="col-md-3">
+
+                    <div class="form-group">
+                        <label for="cases">How long cases:</label>
+                        <select class="form-control" id="cases" name="cases">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <input type="submit" class="btn btn-info" value="Enviar">
+
+                </div>
+
+                <div class="col-md-4" id="inputs">
+
+                </div>
+
+
+
+            </div>
+        </form>
+
+        <script>
+
+            $('#cases').change(function() {
+                var cases = this.value;
+
+                var result = "";
+
+                for (var i = 0; i < cases; i++) {
+
+                    var inputLenght = "<div class='form-group'>"+
+                        "<label for='usr'>Lenght case " + i + ": </label>"+
+                        "<input type='text' class='form-control' maxlength='10' placeholder='Lenght sequence' name='length["+i+"]'>"+
+                        "<input type='text' class='form-control' placeholder='Sequence' name='sequence["+i+"]'>"+
+                        "<input type='text' class='form-control' placeholder='Weight' name='weight["+i+"]'>"+
+                    "</div><div id='sequence-"+i+"'></div><div id='weight-"+i+"'></div>";
+
+                    result += inputLenght;
+                }
+
+                $('#inputs').html( result );
+
+            });
+
+
+        </script>
+
+    </body>
+</html>
